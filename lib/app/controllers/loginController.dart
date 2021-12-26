@@ -41,7 +41,7 @@ class LoginController extends GetxController {
 
   void dialogError(String msg) {
     Get.defaultDialog(
-      title: "Terjadi kesalahan",
+      title: "Something whent wrong",
       middleText: msg,
     );
   }

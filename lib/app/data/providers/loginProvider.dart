@@ -14,4 +14,13 @@ class LoginProvider extends GetConnect {
 
     return post(url + "login.php", form);
   }
+
+  Future<Response> registerUser(String nobp, String name, String password) {
+    final form = FormData({
+      'nobp': nobp,
+      'nama': name,
+      'password': password,
+    });
+    return post(url + "regUser.php", form);
+  }
 }

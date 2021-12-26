@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_api/app/controllers/registerController.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -7,6 +8,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final regC = Get.find<RegisterController>();
     var boxDecoration = BoxDecoration(
         borderRadius: BorderRadius.circular(30.0),
         gradient: new LinearGradient(colors: [
@@ -41,6 +43,7 @@ class RegisterPage extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
+              controller: regC.nameC,
               decoration: InputDecoration(
                 labelText: "Name",
               ),
@@ -53,6 +56,7 @@ class RegisterPage extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
+              controller: regC.nobpC,
               decoration: InputDecoration(
                 labelText: "No Bp",
               ),
@@ -66,6 +70,7 @@ class RegisterPage extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
               obscureText: true,
+              controller: regC.passwordC,
               decoration: InputDecoration(
                 labelText: "Password",
               ),
@@ -78,6 +83,7 @@ class RegisterPage extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
+              controller: regC.rePasswordC,
               obscureText: true,
               decoration: InputDecoration(
                 labelText: "Re-Type Password",
@@ -89,9 +95,12 @@ class RegisterPage extends StatelessWidget {
             alignment: Alignment.centerRight,
             margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
             child: RaisedButton(
-              onPressed: () {
-                Get.back();
-              },
+              onPressed: () => regC.registerUser(
+                regC.nobpC!.text,
+                regC.passwordC!.text,
+                regC.rePasswordC!.text,
+                regC.nameC!.text,
+              ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0)),
               textColor: Colors.white,
