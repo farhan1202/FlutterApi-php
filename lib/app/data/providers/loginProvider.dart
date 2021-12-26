@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:project_api/app/data/models/Candidate.dart';
 
 class LoginProvider extends GetConnect {
   final url = "http://192.168.100.134/pemilu/api/";
@@ -22,5 +23,17 @@ class LoginProvider extends GetConnect {
       'password': password,
     });
     return post(url + "regUser.php", form);
+  }
+
+  Future<Candidate?> getAllCandidate() async {
+    final response = await get(url + "getAllCandidate.php");
+    if ((response.body["data"] as List).length == 0) {
+      return null;
+    }
+
+    Candidate candidate;
+    candidate = Candidate.fromJson(response.body);
+
+    return candidate;
   }
 }

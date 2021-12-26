@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:project_api/app/bindings/addCandidateBinding.dart';
 import 'package:project_api/app/bindings/homeBinding.dart';
 import 'package:project_api/app/bindings/loginBinding.dart';
 import 'package:project_api/app/bindings/registerBinding.dart';
 import 'package:project_api/app/routes/app_route.dart';
+import 'package:project_api/app/views/pages/intro/addCandidatePage.dart';
 import 'package:project_api/app/views/pages/intro/homePage.dart';
 import 'package:project_api/app/views/pages/intro/loginPage.dart';
 import 'package:project_api/app/views/pages/intro/registerPage.dart';
@@ -26,5 +28,10 @@ class AppPage {
       page: () => HomePage(),
       binding: HomeBinding(),
     ),
+    GetPage(
+      name: Routes.addCandidate,
+      page: () => AddCandidatePage(),
+      binding: AddCandidateBinding(),
+    )
   ];
 }
