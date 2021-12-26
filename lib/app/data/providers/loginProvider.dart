@@ -36,4 +36,16 @@ class LoginProvider extends GetConnect {
 
     return candidate;
   }
+
+  Future<Response> addCandidate(
+      String nama, String nobp, String jurusan, String keterangan) {
+    final form = FormData({
+      'nobp_candidate': nobp,
+      'nama': nama,
+      'jurusan': jurusan,
+      'keterangan': keterangan
+    });
+
+    return post(url + "addCandidate.php", form);
+  }
 }

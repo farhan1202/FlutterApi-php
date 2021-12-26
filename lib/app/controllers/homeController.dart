@@ -8,6 +8,8 @@ class HomeController extends GetxController {
   LoginProvider loginProvider = LoginProvider();
 
   Future<void> getAllCandidate() async {
+    candidate.clear();
+
     var data = await loginProvider.getAllCandidate();
 
     if (data!.data != null) {

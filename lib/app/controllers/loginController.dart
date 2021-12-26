@@ -7,12 +7,12 @@ class LoginController extends GetxController {
   TextEditingController? nobpC;
   TextEditingController? passwordC;
 
-  void login(String nobp, String password) {
+  Future<void> login(String nobp, String password) async {
     if (nobp != '' && password != '') {
       LoginProvider().login(nobp, password).then((value) {
         var data = value.body;
         if (data['STATUS'] == "200") {
-          print("mantap");
+          print(data);
           Get.offNamed(Routes.home);
         } else {
           print(data["MESSAGE"]);
